@@ -111,7 +111,7 @@ For eg: Genres -> Action, Horror, Thriller, Sci-Fi, etc. can be encoded by Multi
 3. Not being able to use movie overviews or text features for more accurate recommendations:
 As One-Hot Encoder and MultiLabelBinarizer create new column per encoding or feature, they cannot be used for encoding text like in Movie overview otherwise it would lead to very high dimensionality, thus other than generating recommendations with One-Hot and MultiLabelBinarizer, I also learnt about TF-IDF and it's working based on converting text to vector format (numerical) and thus allowing us to find more accurate recommendations based on Movie Overviews.
 
-Note: Even though TF-IDF does vectorization of strings and helps in finding similarity between different movies, it does not understand the meaning of the sentences and the order in which the words should be, it just finds similarity based on the frequency of words.
+**Note**: Even though TF-IDF does vectorization of strings and helps in finding similarity between different movies, it does not understand the meaning of the sentences and the order in which the words should be, it just finds similarity based on the frequency of words.
 
 
 
