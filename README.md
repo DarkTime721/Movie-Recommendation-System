@@ -1,12 +1,12 @@
 ## This is a Movie Recommendation System built with:
 
-Backend (FastAPI) → Serves recommendations using saved similarity matrices and encoded CSVs.
+Backend (FastAPI): Serves recommendations using saved similarity matrices and encoded CSVs.
 
-Frontend (React) → Provides a simple UI to search movies and display the top recommendations.
+Frontend (React): Provides a simple UI to search movies and display the top recommendations.
 
-Modeling Approach → Uses TF-IDF and One-Hot Encoding to compute similarity scores.
+Modeling Approach: Uses TF-IDF and One-Hot Encoding to compute similarity scores.
 
-Artifacts → Similarity matrices, processed CSVs, and model notebook (.ipynb) are saved inside the repo.
+Artifacts: Similarity matrices, processed CSVs, and model notebook (.ipynb) are saved inside the repo.
 
 ```
 Movie-Recommendation-System/
