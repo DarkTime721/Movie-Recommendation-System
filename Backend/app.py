@@ -1,3 +1,6 @@
+
+# COMMENTS ARE FOR CHANGES REQUIRED TO USE TF-IDF RECOMMENDATION SYSTEM, THIS IS NOT MANDATORY AS THE BELOW SYSTEM WORKS ON ONEHOTENCODER SYSTEM 
+
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
@@ -12,8 +15,8 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-df = pd.read_csv("movies.csv")
-cosine_sim = np.load("similarity_matrix.npy")
+df = pd.read_csv("movies.csv") # Change to movies_1.csv
+cosine_sim = np.load("similarity_matrix.npy") # Change to similarity_matrix1.pkl 
 
 def recommend_by_title(title, top_rec = 5):
     if title not in df['Series_Title'].values:
@@ -27,6 +30,7 @@ def recommend_by_title(title, top_rec = 5):
 
     return df.iloc[top_recommendations][['Series_Title', 'Director', 'Star1', 'IMDB_Rating']].to_dict(orient='records')
 
+### Comment this entire function as the TF-IDF Recommendation dosen't recommend by Genre
 def recommend_by_genre(genre, top_rec = 5):
     genre_col = f"genre_{genre}"
     if genre_col not in df.columns:
@@ -41,15 +45,15 @@ def recommend_by_genre(genre, top_rec = 5):
     top_movies_rec = genre_movies.sort_values('score', ascending=False).head(top_rec)
 
     return top_movies_rec[['Series_Title', 'IMDB_Rating', 'Director', 'Star1']].to_dict(orient="records")
+    
 
 @app.get("/recommend_by_title")
 def get_recommend_by_title(title: str = Query()):
     movies = recommend_by_title(title)
     return {"Recommended_movies": movies}
 
+### Comment/remove
 @app.get("/recommend_by_genre")
 def get_recommend_by_genre(genre: str = Query()):
     movies = recommend_by_genre(genre)
     return {f"Top_movies": movies}
-
-
