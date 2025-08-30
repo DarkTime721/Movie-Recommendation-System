@@ -1,3 +1,7 @@
+
+// COMMENTS ARE FOR CHANGES REQUIRED TO USE TF-IDF RECOMMENDATION SYSTEM, THIS IS NOT MANDATORY AS THE BELOW SYSTEM WORKS ON ONEHOTENCODER SYSTEM 
+// Change the code of this file with the App.js file in the main branch to use the TF-IDF Movie Recommendation system 
+
 import React, { useState } from "react";
 import "./App.css";
 
@@ -10,7 +14,7 @@ function App() {
     if (!title) return;
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/recommend_by_title?title=${title}`
+        `http://127.0.0.1:8000/recommend_by_title?title=${title}`  //Fetches data from the Backend with specific function and it's Query
       );
       const data = await response.json();
       console.log("Backend returned:", data);
@@ -68,7 +72,7 @@ function App() {
       <h3 className="subtitle">Top Recommendations:</h3>
       <div className="movie-grid">
         {recommendations.length > 0 ? (
-          recommendations.map((movie, index) => (
+          recommendations.map((movie, index) => (            // As the Recommended Movies is in the form of array, mapping can be done to traverse the top 5 movies
           <div key={index} className="movie-card">
             <h4 className="movie-title">{movie.Series_Title}</h4>
             <p><strong>Director:</strong> {movie.Director}</p>
