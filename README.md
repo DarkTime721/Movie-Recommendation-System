@@ -83,3 +83,35 @@ The Recommendation System is by default running on the OneHotEncoded dataset (mo
 If you want to use the TF-IDF dataset (movies_1.csv) and it's respective similarity matrix (similarity_matrix_1.npy), please ensure to make some changes in the *app.py* (Backend Folder) and *App.js* (frontend/src) folder.
 
 Comments have been added for the required changes.
+
+# Approach
+
+I built a content-based recommendation system where movies are recommended based on their similarity in metadata and textual descriptions.
+One-Hot Encoding was used for categorical attributes like directors, certificates and MultiLabelBinarizer was used for genres (similar to One-Hot Encoding) to convert them into numerical form and then using Cosine Similarity to measure how close two movies are to each other.
+TF-IDF (Term Frequency–Inverse Document Frequency) was applied to textual features like movie overviews, directors, genres all combined in a single column which would be vectorized to capture the importance of and and then used in Cosine Similarity.
+
+# Tools & Libraries
+
+Python
+
+Pandas, NumPy (data preprocessing)
+
+Scikit-learn (OneHotEncoder, TF-IDF Vectorizer, Cosine Similarity, MultiLabelBinarizer)
+
+FastAPI (for serving the model)
+
+React (for frontend)
+
+# Challenges faced and it's Solutions
+
+1. Seperation of Genres in Genre column and creating One-Hot Encoding like data processing:
+Used MultiLabelBinarizer from Scikit-learn which is very similar to One-Hot Encoding but rather than only able to encode one category per feature, MultiLableBinarizer can label multible categories per feature.
+For eg: Genres -> Action, Horror, Thriller, Sci-Fi, etc. can be encoded by MultilabelBinarizer per feature
+
+3. Not being able to use movie overviews or text features for more accurate recommendations:
+As One-Hot Encoder and MultiLabelBinarizer create new column per encoding or feature, they cannot be used for encoding text like in Movie overview otherwise it would lead to very high dimensionality, thus other than generating recommendations with One-Hot and MultiLabelBinarizer, I also learnt about TF-IDF and it's working based on converting text to vector format (numerical) and thus allowing us to find more accurate recommendations based on Movie Overviews.
+
+Note: Even though TF-IDF does vectorization of strings and helps in finding similarity between different movies, it does not understand the meaning of the sentences and the order in which the words should be, it just finds similarity based on the frequency of words.
+
+
+
