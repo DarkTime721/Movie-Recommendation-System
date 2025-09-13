@@ -88,7 +88,7 @@ Comments have been added for the required changes.
 
 I built a content-based recommendation system where movies are recommended based on their similarity in metadata and textual descriptions.
 One-Hot Encoding was used for categorical attributes like directors, certificates and MultiLabelBinarizer was used for genres (similar to One-Hot Encoding) to convert them into numerical form and then using Cosine Similarity to measure how close two movies are to each other.
-TF-IDF (Term Frequency–Inverse Document Frequency) was applied to textual features like movie overviews, directors, genres all combined in a single column which would be vectorized to capture the importance of and and then used in Cosine Similarity.
+TF-IDF (Term Frequency–Inverse Document Frequency) was applied to textual features like movie overviews, directors, genres all combined in a single column which would be vectorized to capture the importance of text and and then used it in Cosine Similarity.
 
 # Tools & Libraries
 
